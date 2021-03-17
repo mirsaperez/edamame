@@ -4,6 +4,7 @@
 
 // get reference to text field 
 var $txtField = document.querySelector("#searchBox")
+    console.log($txtField)
 // get reference to button 
 // add an onclick evet to button 
 // that finds the value of the text field
