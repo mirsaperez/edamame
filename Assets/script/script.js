@@ -9,10 +9,10 @@ const $resultsContainer=document.querySelector("#results-container")
 //     .then(data => console.log(data));
 
 // get reference to text field 
-var $txtField = document.querySelector("#searchBox");
+var $txtField = document.querySelector("#searchField");
 console.log($txtField);
 // get reference to button 
-var $btn = document.querySelector("#btn");
+var $btn = document.querySelector(".btn");
 console.log($btn);
 // add an onclick event to button 
 $searchform.addEventListener("submit", ( event )=> { 
@@ -28,20 +28,28 @@ $searchform.addEventListener("submit", ( event )=> {
             let recipes=response.hits
             for (let i = 0; i < recipes.length; i++) {
                 const recipe = recipes[i];
-                console.log(recipe)
                 let newTitle=document.createElement("h3")
                 newTitle.innerText=recipe.recipe.label
                 $resultsContainer.appendChild(newTitle)
                 
-              
+              let ingredients = document.createElement("p")
+              ingredients.textContent = recipe.recipe.ingredientLines
+              $resultsContainer.appendChild(ingredients)
+              console.log("response")
             }
         })
     
     
 
 })
-    
+
 // create html elements for data returned 
+
+// get reference for sms button 
+
+
+
+// send recipe link to user's phone number entered 
 
 
 // append new html element to location already on html page 
