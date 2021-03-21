@@ -16,11 +16,11 @@
       <div class="top-bar-left">
         <ul class="menu">
           <li class="menu-text">Simple Recipes</li>
-          <li><a id="searchBox" href="#">Breakfast</a></li>
-          <li><a id="searchBox" href="#">Lunch</a></li>
-          <li><a id="searchBox" href="#">Dinner</a></li>
-          <li><a id="searchBox" href="#">Blog</a></li>
-          <li><a id="searchBox" href="#">Search</a></li>
+          <li><a id="searchBox" href="#breakfast">Breakfast</a></li>
+          <li><a id="searchBox" href="#lunch">Lunch</a></li>
+          <li><a id="searchBox" href="#dinner">Dinner</a></li>
+          <li><a id="searchBox" href="#blog">Blog</a></li>
+          <li><a id="searchBox" href="#search">Search</a></li>
         </ul>
       </div>
     </div>
@@ -39,7 +39,7 @@
 
     <!-- We can now combine rows and columns when there's only one column in that row -->
     <div class="row medium-8 large-7 columns">
-      <div class="Breakfast">
+      <div id ="breakfast" class="Breakfast">
         <h3>Breakfast Recipe <small>3/16/2021</small></h3>
         <img class="thumbnail" src="./Assets/images/Huevos-Rancheros-2.webp" />
         <p>
@@ -57,7 +57,7 @@
         </div>
       </div>
 
-      <div class="Lunch">
+      <div id="lunch" class="Lunch">
         <h3>Lunch Recipe<small>3/16/2021</small></h3>
         <img
           class="thumbnail"
@@ -78,7 +78,7 @@
         </div>
       </div>
 
-      <div class="Dinner">
+      <div id="dinner" class="Dinner">
         <h3>Dinner Recipe <small>3/16/2021</small></h3>
         <img
           class="thumbnail"
@@ -141,7 +141,7 @@
           </ul>
         </div>
 
-        <div class="Search">
+        <div id="search" class="Search">
           <h3>Search</h3>
           <form id="search-form" action="#results-container">
             <label for="searchBox">Recepie Search:</label>
