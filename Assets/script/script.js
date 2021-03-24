@@ -1,10 +1,14 @@
+var savedRecipes = []
+if(localStorage.getItem("recipes")){
+    savedRecipes = (JSON.parse(localStorage.getItem("recipes")))
+}
 var apiId = `65eb38bf`
 var apiKey = `7ba37096f7d35dd3b5bd8c65c2dfe698`
 var edamameApi = `https://api.edamam.com/search?app_id=${apiId}&app_key=${apiKey}&q=`
 var smsApi = `https://www.A-ZSMS.com/api/text`
 const $searchform = document.querySelector("#search-form")
 const $resultsContainer = document.querySelector("#results-container")
-
+displaySaved()
 // fetch(`https://api.edamam.com/search?q=chicken&app_id=${apiId}&app_key=${apiKey}&from=0&to=3&calories=591-722&health=alcohol-free`)
 //     .then(response => response.json())
 //     .then(data => console.log(data));
@@ -51,6 +55,20 @@ $searchform.addEventListener("submit", (event) => {
                 $resultsContainer.appendChild(urlLink)
                 console.log(url)
                 
+                let saveButton = document.createElement("button")
+                saveButton.innerText = "Save"
+                saveButton.dataset.url = recipe.recipe.url
+                console.log(typeof savedRecipes)
+                saveButton.addEventListener("click", function(){
+            
+                        console.log(savedRecipes)
+                        savedRecipes.push({url:this.dataset.url, title:recipe.recipe.label})
+                        localStorage.clear()
+                        localStorage.setItem("recipes", JSON.stringify(savedRecipes))
+              
+                })
+                $resultsContainer.appendChild(saveButton)
+
                 let smsContainer = document.createElement("div")
     
                 
@@ -70,6 +88,21 @@ $searchform.addEventListener("submit", (event) => {
 
 
 })
+
+function displaySaved(){
+    console.log("hello",savedRecipes)
+    let savedContainer = $("#saved")
+    console.log(savedContainer)
+    for (let i = 0; i < savedRecipes.length; i++) {
+        const recipe = savedRecipes[i];
+        let newDiv = $("<div>")
+        console.log(recipe.url)
+       newDiv.text(recipe.url)
+       $(`<div>${recipe.title}: <a href="${recipe.url}">${recipe.url}</a></div>`).appendTo('#saved');
+        
+    }}
+
+
 function sendSms(link, that) {
     console.log(that)
     console.log(that.parentElement)
@@ -81,6 +114,7 @@ var smsData = {
     number: that.parentElement.childNodes[0].value, 
     message: "Enjoy this recipe at " + link
 }
+
 
 // send recipe link to user's phone number entered 
 $.ajax({
@@ -94,4 +128,5 @@ $.ajax({
 console.log(response)
 })
 }
+
 
